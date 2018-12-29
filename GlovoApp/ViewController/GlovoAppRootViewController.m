@@ -83,28 +83,27 @@
 {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.distanceFilter = 250.0; // Will notify the LocationManager every 100 meters
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.allowsBackgroundLocationUpdates = YES;
-    
+
     [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestAlwaysAuthorization];
 }
 
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    CLLocation *currentLocation = [locations lastObject];
-    if (currentLocation != nil)
+    self.currentLocation = [locations lastObject];
+    if (self.currentLocation != nil)
     {
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:currentLocation.coordinate.latitude
-                                                                longitude:currentLocation.coordinate.longitude
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.currentLocation.coordinate.latitude
+                                                                longitude:self.currentLocation.coordinate.longitude
                                                                      zoom:16];
         self.mapView.camera = camera;
     }
     
-    [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+    [self.geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error == nil && [placemarks count] > 0)
         {
             self.placemark = [placemarks lastObject];
@@ -118,7 +117,7 @@
     
     
     //Set pin in current location
-    self.marker = [self.presenter getMarker:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude];
+    self.marker = [self.presenter getMarker:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
     self.marker.map = self.mapView;
 
 }
@@ -190,6 +189,12 @@
 
 - (BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView
 {
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.currentLocation.coordinate.latitude
+                                                            longitude:self.currentLocation.coordinate.longitude
+                                                                 zoom:16];
+    self.mapView.camera = camera;
+
+    
     return YES;
 }
 
