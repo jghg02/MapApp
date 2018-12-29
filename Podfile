@@ -8,6 +8,7 @@ target 'GlovoApp' do
   # Pods for GlovoApp
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
   pod 'Alamofire'
   pod 'JCore-ui'
   pod 'SwiftyJSON'

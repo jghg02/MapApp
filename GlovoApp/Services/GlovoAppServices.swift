@@ -29,12 +29,12 @@ import SwiftyJSON
                 
             case .success(let value):
                 let json = JSON(value)
-                print(json)
+                //print(json)
                 for current in json.arrayValue {
                     tmp.add(Country(dictionary: current.dictionaryObject! as NSDictionary)!)
                 }
                 
-                //Return all Rates from WwebServices
+                //Return
                 completion(tmp as NSArray as? [Country])
                 
             }
@@ -59,20 +59,39 @@ import SwiftyJSON
                 
             case .success(let value):
                 let json = JSON(value)
-                print(json)
+                //print(json)
                 for current in json.arrayValue {
                     tmp.add(City(dictionary: current.dictionaryObject! as NSDictionary)!)
                 }
-                
-                //Return all Rates from WwebServices
+                //Return
                 completion(tmp as NSArray as? [City])
-                
             }
-            
         }
-        
     }
     
+    
+    @objc public class func fetchCityDetails(city_code: String? ,completion: @escaping (City?) -> Void) {
+        
+        let params: [String:String] = ["city_code":city_code!]
+        
+        Alamofire.request("http://localhost:3000/api/cities/\(city_code!)", method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch response.result {
+            case .failure( _):
+                if let data = response.data {
+                    print("Print Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                }
+                //When I get any error return nil
+                completion(nil)
+                
+            case .success(let value):
+                let json = JSON(value)
+                
+                //Return
+                completion(City(dictionary: json.dictionaryObject! as NSDictionary))
+            }
+        }
+    }
     
 
 }

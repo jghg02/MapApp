@@ -12,6 +12,13 @@ import UIKit
 
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var countryNameLabel: UILabel!
+    @IBOutlet weak var countryCodeLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var lenguageLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet weak var timeZoneLabel: UILabel!
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -25,6 +32,15 @@ import UIKit
     public func setupView() {
         GlovoAppBundle.bundle().loadNibNamed("GlovoAppPanelInfoView", owner: self, options: nil)
         contentView.fixInView(self)
+    }
+    
+    public func populateView(data: City?) {
+        countryNameLabel.text = data?.name
+        countryCodeLabel.text = data?.country_code
+        currencyLabel.text = data?.currency
+        lenguageLabel.text = data?.language_code
+        codeLabel.text = data?.code
+        timeZoneLabel.text = data?.time_zone
     }
     
 }

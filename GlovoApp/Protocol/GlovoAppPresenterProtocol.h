@@ -16,13 +16,18 @@
 - (CLLocationManager *)locationManager:(id <CLLocationManagerDelegate>)delegate;
 - (GMSMarker *)getMarker:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
 - (NSMutableArray <GMSMarker *> *)getAllLocations;
+
 - (void)showPanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
 - (void)hidePanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
-- (void)updatePanelinfo:(UIView *)view;
+- (void)updatePanelinfo:(GlovoAppPanelInfoView *)view;
 
 - (void)hideListView:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
 - (void)showListView:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
 
-- (NSArray <Country *> *)fetchCountries;
+- (void)fetchCountries;
+- (void)fetchCities:(GlovoAppListView *)view;
+- (void)fetchCityDetails:(NSString *)city_code;
+
+- (void)lookingCity:(NSString *)cityName;
 
 @end

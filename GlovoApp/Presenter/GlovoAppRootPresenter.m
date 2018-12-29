@@ -15,6 +15,12 @@
 
 @interface GlovoAppRootPresenter ()
 
+@property (strong, nonatomic) NSArray <City *> *cities;
+@property (strong, nonatomic) NSArray <Country *> *countries;
+@property (strong, nonatomic) NSMutableDictionary *allData;
+@property (strong, nonatomic) City *cityInfo;
+@property (strong, nonatomic) GlovoAppPanelInfoView *panelView;
+
 @end
 
 @implementation GlovoAppRootPresenter
@@ -101,7 +107,7 @@
 {
     [UIView animateWithDuration:.30
                      animations:^{
-                         constraint.constant = -270;
+                         constraint.constant = -170;
                          [view layoutIfNeeded];
                      }];
 }
@@ -113,7 +119,7 @@
 {
     [UIView animateWithDuration:.60
                      animations:^{
-                         constraint.constant = 30;
+                         constraint.constant = 100;
                          [view layoutIfNeeded];
                      }];
 }
@@ -122,33 +128,79 @@
 {
     [UIView animateWithDuration:.30
                      animations:^{
-                         constraint.constant = -270;
+                         constraint.constant = -300;
                          [view layoutIfNeeded];
                      }];
 }
 
+- (void)populateList:(NSMutableDictionary *)data view:(GlovoAppListView *)view listCountries:(NSArray <Country *> *)listCountries
+{
+    [view reloadDatainListWithData:data listCountries:listCountries];
+}
+
 #pragma mark - Update panel info
 
-- (void)updatePanelinfo:(UIView *)view
+- (void)updatePanelinfo:(GlovoAppPanelInfoView *)view
 {
+    self.panelView = view;
     
-    
+    if (self.cityInfo) {
+        [view populateViewWithData:self.cityInfo];
+    }
+}
+
+#pragma mark - Looking My Current Location
+
+- (void)lookingCity:(NSString *)cityName
+{
+    for (City *current in self.cities) {
+        if ([[current.name lowercaseString] isEqualToString:[cityName lowercaseString]]) {
+            [self fetchCityDetails:current.code];
+        }
+    }
 }
 
 #pragma mark - WebServices
 
-- (NSArray<Country *> *)fetchCountries {
+- (void)fetchCountries
+{
+    __weak __typeof(self)weakSelf = self;
     [GlovoAppServices fetchCountriesWithCompletion:^(NSArray * _Nullable data) {
-        NSLog(@"HERE");
-        NSLog(@"%@",data);
+        weakSelf.countries = data;
     }];
-    
-    [GlovoAppServices fetchCitiesWithCompletion:^(NSArray<City *> * _Nullable data) {
-        NSLog(@"%@",data);
-    }];
-    
-    return nil;
 }
 
+- (void)fetchCities:(GlovoAppListView *)view
+{
+    __weak __typeof(self)weakSelf = self;
+    [GlovoAppServices fetchCitiesWithCompletion:^(NSArray<City *> * _Nullable data) {
+        weakSelf.cities = data;
+        weakSelf.allData = [self processData:weakSelf.countries cities:weakSelf.cities];
+        [self populateList:weakSelf.allData view:view listCountries:weakSelf.countries];
+    }];
+}
+
+- (void)fetchCityDetails:(NSString *)city_code
+{
+    __weak __typeof(self)weakSelf = self;
+    [GlovoAppServices fetchCityDetailsWithCity_code:city_code completion:^(City * _Nullable data) {
+        weakSelf.cityInfo = data;
+        [weakSelf updatePanelinfo:weakSelf.panelView];
+    }];
+}
+
+- (NSMutableDictionary *)processData:(NSArray <Country *> *)countries cities:(NSArray <City *> *)cities
+{
+    NSMutableDictionary *allData = NSMutableDictionary.new;
+    for (City *currentCity in cities) {
+        if (![allData objectForKey:currentCity.country_code]) {
+            [allData setObject:[NSMutableArray new] forKey:currentCity.country_code];
+        }
+        
+        [[allData objectForKey:currentCity.country_code] addObject:currentCity];
+    }
+    
+    return allData;
+}
 
 @end

@@ -12,6 +12,7 @@
 #import "GlovoApp-Swift.h"
 
 #import <GoogleMaps/GoogleMaps.h>
+@import GooglePlaces;
 @import JCore_ui;
 
 @interface GlovoAppRootViewController ()  <CLLocationManagerDelegate, GMSMapViewDelegate>
@@ -27,9 +28,12 @@
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topLayoutConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
+@property (weak, nonatomic) IBOutlet GlovoAppPanelInfoView *panelInfoView;
 
 @property (strong, nonatomic) NSArray <Country *> *countries;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *navButton;
+
+@property (strong, nonatomic) GMSPlacesClient *placeClient;
 
 @end
 
@@ -48,26 +52,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     [self addNavButton];
     
     self.geocoder = [[CLGeocoder alloc] init];
     [self startLocationManager];
     [self.presenter configMaps:self.mapView delegate:self];
     
+    self.placeClient = [GMSPlacesClient sharedClient];
+    
     [self fetchData];
+    
 }
 
 # pragma mark - Fetch Data from Server
 
 - (void) fetchData
 {
-    self.countries = [self.presenter fetchCountries];
+    [self.presenter fetchCountries];
+    [self.presenter fetchCities:self.listView];
     
-    NSMutableArray <GMSMarker *> *data = [self.presenter getAllLocations];
-    for (GMSMarker* current in data) {
-        current.map = self.mapView;
-    }
+//    NSMutableArray <GMSMarker *> *data = [self.presenter getAllLocations];
+//    for (GMSMarker* current in data) {
+//        current.map = self.mapView;
+//    }
 }
 
 #pragma mark - Config Location
@@ -81,6 +88,7 @@
     self.locationManager.allowsBackgroundLocationUpdates = YES;
     
     [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -101,7 +109,9 @@
         {
             self.placemark = [placemarks lastObject];
             NSString *currentLocation = [NSString stringWithFormat:@"%@,%@", self.placemark.locality, self.placemark.country];
-            NSLog(@"%@",currentLocation.description);
+            NSLog(@"%@-- ",currentLocation.description);
+            [self.presenter lookingCity:self.placemark.locality];
+            [self.presenter updatePanelinfo:self.panelInfoView];
             //[self.panelInformationView setDataWithTitle:self.placemark.locality description:self.placemark.country];
         }
     }];
@@ -123,7 +133,6 @@
         } break;
         case kCLAuthorizationStatusDenied: {
             NSLog(@"User denied location access request!!");
-            [self fetchData];
             [self.locationManager stopUpdatingLocation];
         } break;
         case kCLAuthorizationStatusAuthorizedWhenInUse:
@@ -161,6 +170,20 @@
 - (IBAction)didTapNavButton:(id)sender
 {
     [self.presenter showListView:self.listView constraint:self.topLayoutConstraint];
+    
+    [self.placeClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
+        if (error != nil) {
+            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            return;
+        }
+        
+        if (placeLikelihoodList != nil) {
+            GMSPlace *place = [[[placeLikelihoodList likelihoods] firstObject] place];
+            if (place != nil) {
+                NSLog(@"Place Name %@",place.name);
+            }
+        }
+    }];
 }
 
 #pragma mark - Tap Actions

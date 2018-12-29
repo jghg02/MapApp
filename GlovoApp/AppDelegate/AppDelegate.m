@@ -12,6 +12,7 @@
 #import "GlovoAppRootViewController.h"
 
 @import GoogleMaps;
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -40,6 +41,7 @@
     
     //Google Maps - Config
     [GMSServices provideAPIKey:@"AIzaSyDmrxgoFIrmJmKmzP_R-zkMR-pUeIvPzpA"];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyCHtusT0hGmnW3Y0ycyEkQtoOEKLaLR04E"];
 
     return YES;
 }
