@@ -20,10 +20,20 @@
 @property (strong, nonatomic) NSMutableDictionary *allData;
 @property (strong, nonatomic) City *cityInfo;
 @property (strong, nonatomic) GlovoAppPanelInfoView *panelView;
+@property (strong, nonatomic) CLPlacemark *currentPlace;
 
 @end
 
 @implementation GlovoAppRootPresenter
+
+#pragma mark - Init
+
+- (void)initwithPlace:(CLPlacemark *)placeMark panelView:(GlovoAppPanelInfoView *)view
+{
+    self.currentPlace = placeMark;
+    self.panelView = view;
+}
+
 
 #pragma mark - Google Maps Config
 
@@ -140,13 +150,10 @@
 
 #pragma mark - Update panel info
 
-- (void)updatePanelinfo:(GlovoAppPanelInfoView *)view
+- (void)updatePanelinfo:(GlovoAppPanelInfoView *)view data:(City *)data
 {
-    self.panelView = view;
-    
-    if (self.cityInfo) {
-        [view populateViewWithData:self.cityInfo];
-    }
+    NSLog(@"View %@",view);
+    [view populateViewWithData:data];
 }
 
 #pragma mark - Looking My Current Location
@@ -155,6 +162,15 @@
 {
     for (City *current in self.cities) {
         if ([[current.name lowercaseString] isEqualToString:[cityName lowercaseString]]) {
+            [self fetchCityDetails:current.code];
+        }
+    }
+}
+
+- (void)lookingCountry:(NSString *)contryName
+{
+    for (Country *current in self.countries) {
+        if ([[current.name lowercaseString] isEqualToString:[contryName lowercaseString]]) {
             [self fetchCityDetails:current.code];
         }
     }
@@ -177,6 +193,7 @@
         weakSelf.cities = data;
         weakSelf.allData = [self processData:weakSelf.countries cities:weakSelf.cities];
         [self populateList:weakSelf.allData view:view listCountries:weakSelf.countries];
+        [weakSelf updatePanelInfo:weakSelf.panelView country:self.currentPlace.administrativeArea city:self.currentPlace.ISOcountryCode];
     }];
 }
 
@@ -185,7 +202,7 @@
     __weak __typeof(self)weakSelf = self;
     [GlovoAppServices fetchCityDetailsWithCity_code:city_code completion:^(City * _Nullable data) {
         weakSelf.cityInfo = data;
-        [weakSelf updatePanelinfo:weakSelf.panelView];
+        [weakSelf updatePanelinfo:weakSelf.panelView data:weakSelf.cityInfo];
     }];
 }
 
@@ -201,6 +218,17 @@
     }
     
     return allData;
+}
+
+- (void)updatePanelInfo:(GlovoAppPanelInfoView *)view country:(NSString *)countryName city:(NSString *)city
+{
+    NSArray <City *> *allCities = self.allData[city];
+    
+    for (City *current in allCities) {
+        if ([[countryName lowercaseString] isEqualToString:[current.name lowercaseString]]) {
+            [self fetchCityDetails:current.code];
+        }
+    }
 }
 
 @end

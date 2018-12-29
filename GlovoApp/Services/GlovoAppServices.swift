@@ -13,9 +13,11 @@ import SwiftyJSON
 
 @objc class GlovoAppServices: NSObject {
     
+    let WEB_SERVER_URL = "https://040cc916.ngrok.io"
+    
     @objc public class func fetchCountries(completion: @escaping ([Country]?) -> Void) {
         
-        Alamofire.request("http://localhost:3000/api/countries/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("https://040cc916.ngrok.io/api/countries/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             let tmp : NSMutableArray = []
             
@@ -45,7 +47,7 @@ import SwiftyJSON
     
     @objc public class func fetchCities(completion: @escaping ([City]?) -> Void) {
         
-        Alamofire.request("http://localhost:3000/api/cities/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("https://040cc916.ngrok.io/api/cities/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             let tmp : NSMutableArray = []
             
@@ -74,7 +76,7 @@ import SwiftyJSON
         
         let params: [String:String] = ["city_code":city_code!]
         
-        Alamofire.request("http://localhost:3000/api/cities/\(city_code!)", method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("https://040cc916.ngrok.io/api/cities/\(city_code!)", method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             switch response.result {
             case .failure( _):

@@ -52,6 +52,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self fetchData];
+    
     [self addNavButton];
     
     self.geocoder = [[CLGeocoder alloc] init];
@@ -59,9 +62,6 @@
     [self.presenter configMaps:self.mapView delegate:self];
     
     self.placeClient = [GMSPlacesClient sharedClient];
-    
-    [self fetchData];
-    
 }
 
 # pragma mark - Fetch Data from Server
@@ -83,7 +83,7 @@
 {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = 250.0; // Will notify the LocationManager every 100 meters
+    self.locationManager.distanceFilter = 100.0; // Will notify the LocationManager every 100 meters
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.allowsBackgroundLocationUpdates = YES;
 
@@ -109,16 +109,14 @@
             self.placemark = [placemarks lastObject];
             NSString *currentLocation = [NSString stringWithFormat:@"%@,%@", self.placemark.locality, self.placemark.country];
             NSLog(@"%@-- ",currentLocation.description);
-            [self.presenter lookingCity:self.placemark.locality];
-            [self.presenter updatePanelinfo:self.panelInfoView];
-            //[self.panelInformationView setDataWithTitle:self.placemark.locality description:self.placemark.country];
+            [self.presenter initwithPlace:self.placemark panelView:self.panelInfoView];
         }
     }];
     
     
-    //Set pin in current location
-    self.marker = [self.presenter getMarker:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
-    self.marker.map = self.mapView;
+//    //Set pin in current location
+//    self.marker = [self.presenter getMarker:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
+//    self.marker.map = self.mapView;
 
 }
 
@@ -189,6 +187,7 @@
 
 - (BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView
 {
+    //Update Camera.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.currentLocation.coordinate.latitude
                                                             longitude:self.currentLocation.coordinate.longitude
                                                                  zoom:16];

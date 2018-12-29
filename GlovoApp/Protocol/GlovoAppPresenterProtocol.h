@@ -12,6 +12,8 @@
 
 @protocol GlovoAppPresenterProtocol
 
+- (void)initwithPlace:(CLPlacemark *)placeMark panelView:(GlovoAppPanelInfoView *)view;
+
 - (void)configMaps:(GMSMapView *)mapView delegate:(id<GMSMapViewDelegate>)delegate;
 - (CLLocationManager *)locationManager:(id <CLLocationManagerDelegate>)delegate;
 - (GMSMarker *)getMarker:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
@@ -19,7 +21,7 @@
 
 - (void)showPanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
 - (void)hidePanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
-- (void)updatePanelinfo:(GlovoAppPanelInfoView *)view;
+- (void)updatePanelinfo:(GlovoAppPanelInfoView *)view data:(City *)data;
 
 - (void)hideListView:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
 - (void)showListView:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
@@ -28,6 +30,6 @@
 - (void)fetchCities:(GlovoAppListView *)view;
 - (void)fetchCityDetails:(NSString *)city_code;
 
-- (void)lookingCity:(NSString *)cityName;
+- (void)updatePanelInfo:(GlovoAppPanelInfoView *)view country:(NSString *)countryName city:(NSString *)city;
 
 @end
