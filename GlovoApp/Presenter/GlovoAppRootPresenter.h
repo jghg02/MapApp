@@ -12,6 +12,6 @@
 
 #import "GlovoApp-Swift.h"
 
-@interface GlovoAppRootPresenter : NSObject <GlovoAppPresenterProtocol>
+@interface GlovoAppRootPresenter : NSObject <GlovoAppPresenterProtocol, GlovoAppListViewProtocol>
 
 @end

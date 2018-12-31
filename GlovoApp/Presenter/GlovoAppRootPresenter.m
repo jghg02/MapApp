@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSMutableDictionary *allData;
 @property (strong, nonatomic) City *cityInfo;
 @property (strong, nonatomic) GlovoAppPanelInfoView *panelView;
+@property (strong, nonatomic) GlovoAppListView *listView;
 @property (strong, nonatomic) CLPlacemark *currentPlace;
 @property (strong, nonatomic) NSMutableArray <GooglePlace *> *allGooglePlaces;
 @property (strong, nonatomic) NSMutableArray <GMSMarker *> *markers;
@@ -147,6 +148,8 @@
 
 - (void)populateList:(NSMutableDictionary *)data view:(GlovoAppListView *)view listCountries:(NSArray <Country *> *)listCountries
 {
+    self.listView = view;
+    view.delegate = self;
     [view reloadDatainListWithData:data listCountries:listCountries];
 }
 
@@ -260,6 +263,7 @@
     
 }
 
+
 - (void)getAllInfoFromGoogle
 {
     self.allGooglePlaces = NSMutableArray.new;
@@ -279,10 +283,28 @@
     NSDictionary<NSString *, NSString *> *conversionTable = @{
                                                               @"Turin":@"Torino",
                                                               @"Rome":@"Roma",
-                                                              @"Sur":@"Madrid Sur"
+                                                              @"Sur":@"Madrid Sur",
+                                                              @"Milan":@"Milano",
+                                                              @"13":@"Milano Nord"
                                                               };
     
     return conversionTable[cityName];
+}
+
+- (void)didTapRowWithCity:(City * _Nonnull)city
+{
+    [self fetchCityDetails:city.code];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"longName==%@",city.name];
+    GooglePlace *place = [self.allGooglePlaces filteredArrayUsingPredicate:predicate].firstObject;
+
+    //Update Camera
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:place.lat
+                                                            longitude:place.lng
+                                                                 zoom:16];
+    self.mapView.camera = camera;
+    
+    
 }
 
 @end

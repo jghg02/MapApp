@@ -8,11 +8,17 @@
 
 import UIKit
 
-@objc public class GlovoAppListView: UIView, UITableViewDelegate, UITableViewDataSource{
+@objc public protocol GlovoAppListViewProtocol {
+    func didTapRow(city: City)
+}
 
+
+@objc public class GlovoAppListView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var listView: UITableView!
+    
+    var delegate: GlovoAppListViewProtocol?
     
     var allData: [String:[City]] = [:]
     var listcountries: [Country] = []
@@ -71,7 +77,11 @@ import UIKit
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let countryCode = listcountries[indexPath.section]
+        listcities = allData[countryCode.code!]!
+        let city: City = listcities[indexPath.row]
         
+        self.delegate?.didTapRow(city: city)
     }
     
     

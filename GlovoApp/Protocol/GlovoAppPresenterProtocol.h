@@ -19,7 +19,6 @@
 - (CLLocationManager *)locationManager:(id <CLLocationManagerDelegate>)delegate;
 - (GMSMarker *)getMarker:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
 
-- (NSMutableArray <GMSMarker *> *)getAllLocations;
 - (void)setAllMarkers:(GooglePlace *)place;
 
 - (void)showPanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
