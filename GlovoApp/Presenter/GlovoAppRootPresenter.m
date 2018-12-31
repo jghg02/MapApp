@@ -198,7 +198,8 @@
         weakSelf.allData = [self processData:weakSelf.countries cities:weakSelf.cities];
         [self populateList:weakSelf.allData view:view listCountries:weakSelf.countries];
         [weakSelf updatePanelInfo:weakSelf.panelView country:self.currentPlace.administrativeArea city:self.currentPlace.ISOcountryCode];
-        [self getAllInfoFromGoogle];
+        [weakSelf getAllInfoFromGoogle];
+        [weakSelf drawPolygone];
     }];
 }
 
@@ -292,6 +293,8 @@
     return conversionTable[cityName];
 }
 
+#pragma mark - GlovoAppListViewProtocol
+
 - (void)didTapRowWithCity:(City * _Nonnull)city
 {
     [self fetchCityDetails:city.code];
@@ -304,8 +307,25 @@
                                                             longitude:place.lng
                                                                  zoom:16];
     self.mapView.camera = camera;
+}
+
+#pragma mark - Polygones
+
+- (void)drawPolygone
+{
+    GMSMutablePath *path = nil;
     
-    
+    for (City *currentCity in self.cities) {
+        path = [GMSMutablePath path];
+        for (Coordinates *coordinate in currentCity.polygone_data) {
+            [path addCoordinate:CLLocationCoordinate2DMake(coordinate.lat, coordinate.lng)];
+        }
+        
+        GMSPolygon *polygon = [GMSPolygon polygonWithPath:path];
+        polygon.map = self.mapView;
+        path = nil;
+    }
+
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Polyline
+import CoreLocation
 
 @objc public class City: NSObject {
     
@@ -18,8 +20,10 @@ import UIKit
     public var currency: String?
     public var time_zone: String?
     public var language_code: String?
+    public var polygone_data: [Coordinates]? = []
     
     init?(dictionary: NSDictionary?) {
+        super.init()
         if (dictionary == nil) {
             return nil
         }
@@ -36,6 +40,25 @@ import UIKit
         self.currency = dictionary!["currency"] as? String
         self.time_zone = dictionary!["time_zone"] as? String
         self.language_code = dictionary!["language_code"] as? String
+        
+        self.decodePolygone(area: self.working_area)
     }
 
+    func decodePolygone(area: [String?]) {
+        
+        for current in area {
+            let polyline = Polyline(encodedPolyline: current!)
+            let decodedCoordinates: [CLLocationCoordinate2D]? = polyline.coordinates
+            self.processCoordinate(data: decodedCoordinates)
+        }
+    }
+    
+    func processCoordinate(data: [CLLocationCoordinate2D]?) {
+        
+        for current in data! {
+            self.polygone_data?.append(Coordinates(data: current)!)
+        }
+        
+    }
+    
 }

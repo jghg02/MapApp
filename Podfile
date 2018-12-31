@@ -12,6 +12,7 @@ target 'GlovoApp' do
   pod 'Alamofire'
   pod 'JCore-ui'
   pod 'SwiftyJSON'
+  pod 'Polyline', '~> 4.0'
 
   target 'GlovoAppTests' do
     inherit! :search_paths

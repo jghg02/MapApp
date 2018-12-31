@@ -14,6 +14,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 @import GooglePlaces;
 @import JCore_ui;
+@import Polyline;
 
 @interface GlovoAppRootViewController ()  <CLLocationManagerDelegate, GMSMapViewDelegate>
 

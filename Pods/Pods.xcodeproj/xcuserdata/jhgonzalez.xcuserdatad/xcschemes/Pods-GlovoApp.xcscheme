@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBDC7877F3165028D80C39906B0DB74F"
+               BlueprintIdentifier = "BD814D31D5D7D7D6360AF6C51C4A48AA"
                BuildableName = "Pods_GlovoApp.framework"
                BlueprintName = "Pods-GlovoApp"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EBDC7877F3165028D80C39906B0DB74F"
+            BlueprintIdentifier = "BD814D31D5D7D7D6360AF6C51C4A48AA"
             BuildableName = "Pods_GlovoApp.framework"
             BlueprintName = "Pods-GlovoApp"
             ReferencedContainer = "container:Pods.xcodeproj">

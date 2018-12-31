@@ -5,33 +5,43 @@ PODS:
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
+  - GooglePlacePicker (2.7.0):
+    - GoogleMaps (= 2.7.0)
+    - GooglePlaces (= 2.7.0)
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
   - JCore-ui (0.4.0)
+  - Polyline (4.2.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - GoogleMaps
+  - GooglePlacePicker
   - GooglePlaces
   - JCore-ui
+  - Polyline (~> 4.0)
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - GoogleMaps
+    - GooglePlacePicker
     - GooglePlaces
     - JCore-ui
+    - Polyline
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   JCore-ui: 2887fbdbdd405552c54eee51e6ec11f94d6b085c
+  Polyline: 3d69f75bb136357e27291d439d0436c6ebda57a4
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 1d49a71d5a44598bcfc8d416f5967e607c1637bd
+PODFILE CHECKSUM: 8d4fac694bbc1b414b1f6fa7c083a5c358d69340
 
 COCOAPODS: 1.5.0
