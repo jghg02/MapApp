@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Presenter/GlovoAppRootPresenter.m"
-            timestampString = "567971807.628166"
+            timestampString = "567972378.0708441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Presenter/GlovoAppRootPresenter.m"
-            timestampString = "567971807.628644"
+            timestampString = "567972378.0709881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "254"
@@ -134,11 +134,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Presenter/GlovoAppRootPresenter.m"
-            timestampString = "567971807.6289181"
+            timestampString = "567972378.071053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
@@ -147,48 +147,48 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[GlovoAppRootPresenter fetchCityDetails:]"
                   moduleName = "GlovoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jhgonzalez/Desktop/MyApp/Me/GlovoApp/GlovoApp/Presenter/GlovoAppRootPresenter.m"
-                  timestampString = "567969148.563941"
+                  timestampString = "567972378.231703"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
                   offsetFromSymbolStart = "60">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__42-[GlovoAppRootPresenter fetchCityDetails:]_block_invoke"
                   moduleName = "GlovoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jhgonzalez/Desktop/MyApp/Me/GlovoApp/GlovoApp/Presenter/GlovoAppRootPresenter.m"
-                  timestampString = "567969148.565601"
+                  timestampString = "567972378.233797"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
                   offsetFromSymbolStart = "0">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.142"
+                  symbolName = "__destroy_helper_block_.144"
                   moduleName = "GlovoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jhgonzalez/Desktop/MyApp/Me/GlovoApp/GlovoApp/Presenter/GlovoAppRootPresenter.m"
-                  timestampString = "567969148.56726"
+                  timestampString = "567972378.2357351"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
                   offsetFromSymbolStart = "0">
                </Location>
             </Locations>
@@ -213,11 +213,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Presenter/GlovoAppRootPresenter.m"
-            timestampString = "567971807.629216"
+            timestampString = "567972378.071134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
@@ -233,7 +233,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Presenter/GlovoAppRootPresenter.m"
-            timestampString = "567971807.62948"
+            timestampString = "567972378.071196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -261,11 +261,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Presenter/GlovoAppRootPresenter.m"
-            timestampString = "567971807.6297489"
+            timestampString = "567972378.071282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
@@ -281,7 +281,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GlovoApp/Views/GlovoAppListView.swift"
-            timestampString = "567971807.630037"
+            timestampString = "567972378.071371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"

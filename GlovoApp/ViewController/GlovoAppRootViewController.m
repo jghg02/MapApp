@@ -53,6 +53,7 @@
 {
     [super viewDidLoad];
     
+    [self.presenter initwithPlace:self.placemark panelView:self.panelInfoView];
     [self.presenter initWithMapView:self.mapView];
     
     [self fetchData];
@@ -121,6 +122,7 @@
         } break;
         case kCLAuthorizationStatusDenied: {
             NSLog(@"User denied location access request!!");
+            [self.presenter showListView:self.listView constraint:self.topLayoutConstraint];
             [self.locationManager stopUpdatingLocation];
         } break;
         case kCLAuthorizationStatusAuthorizedWhenInUse:
