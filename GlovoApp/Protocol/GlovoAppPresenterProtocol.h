@@ -29,6 +29,7 @@
 - (void)fetchCountries;
 - (void)fetchCities:(GlovoAppListView *)view;
 - (void)fetchCityDetails:(NSString *)city_code;
+- (void)fetchGoogleAPI:(NSString *)cityName countryName:(NSString *)countryName;
 
 - (void)updatePanelInfo:(GlovoAppPanelInfoView *)view country:(NSString *)countryName city:(NSString *)city;
 

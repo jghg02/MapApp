@@ -15,6 +15,7 @@
 		6B0F053621D5858E00C6974B /* GlovoAppPanelInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F053521D5858E00C6974B /* GlovoAppPanelInfoView.xib */; };
 		6B0F053821D5ABB500C6974B /* GlovoAppListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F053721D5ABB500C6974B /* GlovoAppListView.swift */; };
 		6B0F053A21D5ABBF00C6974B /* GlovoAppListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F053921D5ABBF00C6974B /* GlovoAppListView.xib */; };
+		6B73081D21D969CD00E2ED7B /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B73081C21D969CD00E2ED7B /* GooglePlace.swift */; };
 		6B9FB98A21D1AAF40079CFAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FB98921D1AAF40079CFAE /* AppDelegate.m */; };
 		6B9FB99221D1AAF60079CFAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FB99121D1AAF60079CFAE /* Assets.xcassets */; };
 		6B9FB99521D1AAF60079CFAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FB99321D1AAF60079CFAE /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 		6B0F053521D5858E00C6974B /* GlovoAppPanelInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlovoAppPanelInfoView.xib; sourceTree = "<group>"; };
 		6B0F053721D5ABB500C6974B /* GlovoAppListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoAppListView.swift; sourceTree = "<group>"; };
 		6B0F053921D5ABBF00C6974B /* GlovoAppListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlovoAppListView.xib; sourceTree = "<group>"; };
+		6B73081C21D969CD00E2ED7B /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		6B9FB98521D1AAF40079CFAE /* GlovoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlovoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9FB98821D1AAF40079CFAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B9FB98921D1AAF40079CFAE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				6B0F052F21D5281700C6974B /* Country.swift */,
 				6B0F053121D5282300C6974B /* City.swift */,
+				6B73081C21D969CD00E2ED7B /* GooglePlace.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			files = (
 				6B0F053021D5281700C6974B /* Country.swift in Sources */,
 				6BE74FBA21D50F9D00878B8A /* GlovoAppBundle.m in Sources */,
+				6B73081D21D969CD00E2ED7B /* GooglePlace.swift in Sources */,
 				6B9FB9BE21D3CCF80079CFAE /* GlovoAppRootPresenter.m in Sources */,
 				6B9FB99821D1AAF60079CFAE /* main.m in Sources */,
 				6B9FB9B421D1AEB80079CFAE /* GlovoAppRootViewController.m in Sources */,

@@ -54,7 +54,6 @@
     [super viewDidLoad];
     
     [self fetchData];
-    
     [self addNavButton];
     
     self.geocoder = [[CLGeocoder alloc] init];
@@ -167,20 +166,6 @@
 - (IBAction)didTapNavButton:(id)sender
 {
     [self.presenter showListView:self.listView constraint:self.topLayoutConstraint];
-    
-    [self.placeClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
-        if (error != nil) {
-            NSLog(@"Pick Place error %@", [error localizedDescription]);
-            return;
-        }
-        
-        if (placeLikelihoodList != nil) {
-            GMSPlace *place = [[[placeLikelihoodList likelihoods] firstObject] place];
-            if (place != nil) {
-                NSLog(@"Place Name %@",place.name);
-            }
-        }
-    }];
 }
 
 #pragma mark - Tap Actions

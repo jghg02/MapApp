@@ -36,7 +36,6 @@ import UIKit
         self.currency = dictionary!["currency"] as? String
         self.time_zone = dictionary!["time_zone"] as? String
         self.language_code = dictionary!["language_code"] as? String
-        
     }
 
 }

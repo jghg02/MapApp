@@ -23,6 +23,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //Google Maps - Config
+    [GMSServices provideAPIKey:@"AIzaSyA-IQAMGWSn2XgZs-fbHv46xFX0j1EBEN0"];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyA-IQAMGWSn2XgZs-fbHv46xFX0j1EBEN0"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     GlovoAppRootPresenter *presenter = [GlovoAppRootPresenter new];
@@ -38,10 +42,6 @@
     
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
-    
-    //Google Maps - Config
-    [GMSServices provideAPIKey:@"AIzaSyDmrxgoFIrmJmKmzP_R-zkMR-pUeIvPzpA"];
-    [GMSPlacesClient provideAPIKey:@"AIzaSyCHtusT0hGmnW3Y0ycyEkQtoOEKLaLR04E"];
 
     return YES;
 }

@@ -21,6 +21,7 @@
 @property (strong, nonatomic) City *cityInfo;
 @property (strong, nonatomic) GlovoAppPanelInfoView *panelView;
 @property (strong, nonatomic) CLPlacemark *currentPlace;
+@property (strong, nonatomic) NSMutableArray <GooglePlace *> *allGooglePlaces;
 
 @end
 
@@ -194,6 +195,7 @@
         weakSelf.allData = [self processData:weakSelf.countries cities:weakSelf.cities];
         [self populateList:weakSelf.allData view:view listCountries:weakSelf.countries];
         [weakSelf updatePanelInfo:weakSelf.panelView country:self.currentPlace.administrativeArea city:self.currentPlace.ISOcountryCode];
+        [self getAllInfoFromGoogle];
     }];
 }
 
@@ -203,6 +205,14 @@
     [GlovoAppServices fetchCityDetailsWithCity_code:city_code completion:^(City * _Nullable data) {
         weakSelf.cityInfo = data;
         [weakSelf updatePanelinfo:weakSelf.panelView data:weakSelf.cityInfo];
+    }];
+}
+
+- (void)fetchGoogleAPI:(NSString *)cityName countryName:(NSString *)countryName
+{
+    __weak __typeof(self)weakSelf = self;
+    [GlovoAppServices googleMapsAPIWithCityName:cityName countryName:countryName completion:^(GooglePlace * _Nullable data) {
+        [weakSelf.allGooglePlaces addObject:data];
     }];
 }
 
@@ -227,6 +237,17 @@
     for (City *current in allCities) {
         if ([[countryName lowercaseString] isEqualToString:[current.name lowercaseString]]) {
             [self fetchCityDetails:current.code];
+        }
+    }
+}
+
+- (void)getAllInfoFromGoogle
+{
+    for (City *currentCity in self.cities) {
+        for (Country *currentCountry in self.countries) {
+            if ([currentCity.country_code isEqualToString:currentCountry.code]) {
+                [self fetchGoogleAPI:currentCity.name countryName:currentCountry.name];
+            }
         }
     }
 }
