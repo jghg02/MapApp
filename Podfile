@@ -16,6 +16,7 @@ target 'GlovoApp' do
 
   target 'GlovoAppTests' do
     inherit! :search_paths
+    pod 'Expecta', '~> 1.0'
     # Pods for testing
   end
 

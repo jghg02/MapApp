@@ -16,6 +16,9 @@
 		6B0F053821D5ABB500C6974B /* GlovoAppListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F053721D5ABB500C6974B /* GlovoAppListView.swift */; };
 		6B0F053A21D5ABBF00C6974B /* GlovoAppListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F053921D5ABBF00C6974B /* GlovoAppListView.xib */; };
 		6B25DB1F21DAB87000B5E88C /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25DB1E21DAB87000B5E88C /* Coordinates.swift */; };
+		6B25DB2421DABF1B00B5E88C /* CountryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25DB2321DABF1B00B5E88C /* CountryTest.swift */; };
+		6B25DB2621DAC0C400B5E88C /* CityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B25DB2521DAC0C400B5E88C /* CityTest.swift */; };
+		6B25DB2821DAC2A500B5E88C /* GlovoAppRootViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25DB2721DAC2A500B5E88C /* GlovoAppRootViewControllerTest.m */; };
 		6B73081D21D969CD00E2ED7B /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B73081C21D969CD00E2ED7B /* GooglePlace.swift */; };
 		6B9FB98A21D1AAF40079CFAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FB98921D1AAF40079CFAE /* AppDelegate.m */; };
 		6B9FB99221D1AAF60079CFAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FB99121D1AAF60079CFAE /* Assets.xcassets */; };
@@ -26,7 +29,6 @@
 		6B9FB9B521D1AEB80079CFAE /* GlovoAppRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FB9B321D1AEB80079CFAE /* GlovoAppRootViewController.xib */; };
 		6B9FB9BA21D3B92E0079CFAE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9FB9B921D3B92E0079CFAE /* CoreLocation.framework */; };
 		6B9FB9BE21D3CCF80079CFAE /* GlovoAppRootPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FB9BD21D3CCF80079CFAE /* GlovoAppRootPresenter.m */; };
-		6B9FB9C421D45EA30079CFAE /* GlovoAppPlaceMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FB9C321D45EA30079CFAE /* GlovoAppPlaceMarkers.swift */; };
 		6B9FB9C721D462490079CFAE /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FB9C621D462490079CFAE /* style.json */; };
 		6BE74FBA21D50F9D00878B8A /* GlovoAppBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE74FB921D50F9D00878B8A /* GlovoAppBundle.m */; };
 		E58B03CBAF67F59DFE1510AF /* Pods_GlovoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB0EE21CC2FE7747A7A703 /* Pods_GlovoAppTests.framework */; };
@@ -53,6 +55,10 @@
 		6B0F053721D5ABB500C6974B /* GlovoAppListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoAppListView.swift; sourceTree = "<group>"; };
 		6B0F053921D5ABBF00C6974B /* GlovoAppListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlovoAppListView.xib; sourceTree = "<group>"; };
 		6B25DB1E21DAB87000B5E88C /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		6B25DB2221DABF1B00B5E88C /* GlovoAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlovoAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B25DB2321DABF1B00B5E88C /* CountryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTest.swift; sourceTree = "<group>"; };
+		6B25DB2521DAC0C400B5E88C /* CityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTest.swift; sourceTree = "<group>"; };
+		6B25DB2721DAC2A500B5E88C /* GlovoAppRootViewControllerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlovoAppRootViewControllerTest.m; sourceTree = "<group>"; };
 		6B73081C21D969CD00E2ED7B /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		6B9FB98521D1AAF40079CFAE /* GlovoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlovoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9FB98821D1AAF40079CFAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,7 +78,6 @@
 		6B9FB9BD21D3CCF80079CFAE /* GlovoAppRootPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlovoAppRootPresenter.m; sourceTree = "<group>"; };
 		6B9FB9C021D3D3540079CFAE /* GlovoAppPresenterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlovoAppPresenterProtocol.h; sourceTree = "<group>"; };
 		6B9FB9C221D45EA30079CFAE /* GlovoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlovoApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		6B9FB9C321D45EA30079CFAE /* GlovoAppPlaceMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoAppPlaceMarkers.swift; sourceTree = "<group>"; };
 		6B9FB9C621D462490079CFAE /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		6BE74FB821D50F9D00878B8A /* GlovoAppBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlovoAppBundle.h; sourceTree = "<group>"; };
 		6BE74FB921D50F9D00878B8A /* GlovoAppBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlovoAppBundle.m; sourceTree = "<group>"; };
@@ -179,6 +184,10 @@
 			children = (
 				6B9FB9A121D1AAF60079CFAE /* GlovoAppTests.m */,
 				6B9FB9A321D1AAF60079CFAE /* Info.plist */,
+				6B25DB2321DABF1B00B5E88C /* CountryTest.swift */,
+				6B25DB2221DABF1B00B5E88C /* GlovoAppTests-Bridging-Header.h */,
+				6B25DB2521DAC0C400B5E88C /* CityTest.swift */,
+				6B25DB2721DAC2A500B5E88C /* GlovoAppRootViewControllerTest.m */,
 			);
 			path = GlovoAppTests;
 			sourceTree = "<group>";
@@ -223,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				6B9FB9C221D45EA30079CFAE /* GlovoApp-Bridging-Header.h */,
-				6B9FB9C321D45EA30079CFAE /* GlovoAppPlaceMarkers.swift */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 				6B9FB99921D1AAF60079CFAE /* Sources */,
 				6B9FB99A21D1AAF60079CFAE /* Frameworks */,
 				6B9FB99B21D1AAF60079CFAE /* Resources */,
+				B7ECF455F435F673F68B9F30 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +337,7 @@
 					};
 					6B9FB99C21D1AAF60079CFAE = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = 6B9FB98421D1AAF40079CFAE;
 					};
 				};
@@ -417,6 +427,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B7ECF455F435F673F68B9F30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GlovoAppTests/Pods-GlovoAppTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlovoAppTests/Pods-GlovoAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BE74866C1A267E5CE84193AC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -476,7 +508,6 @@
 				6B25DB1F21DAB87000B5E88C /* Coordinates.swift in Sources */,
 				6B0F052C21D5209700C6974B /* GlovoAppServices.swift in Sources */,
 				6B0F053821D5ABB500C6974B /* GlovoAppListView.swift in Sources */,
-				6B9FB9C421D45EA30079CFAE /* GlovoAppPlaceMarkers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +515,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B25DB2821DAC2A500B5E88C /* GlovoAppRootViewControllerTest.m in Sources */,
+				6B25DB2421DABF1B00B5E88C /* CountryTest.swift in Sources */,
+				6B25DB2621DAC0C400B5E88C /* CityTest.swift in Sources */,
 				6B9FB9A221D1AAF60079CFAE /* GlovoAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,7 +661,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WJT82ZM6C7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GlovoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -638,7 +672,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "GlovoApp/Place/GlovoApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -649,7 +683,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WJT82ZM6C7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GlovoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -659,7 +693,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GlovoApp/Place/GlovoApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -669,7 +703,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GlovoAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -678,6 +714,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jghg.GlovoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GlovoAppTests/GlovoAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlovoApp.app/GlovoApp";
 			};
@@ -689,7 +728,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GlovoAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,6 +739,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jghg.GlovoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GlovoAppTests/GlovoAppTests-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlovoApp.app/GlovoApp";
 			};
