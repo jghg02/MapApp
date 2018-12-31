@@ -111,7 +111,7 @@
 {
     [UIView animateWithDuration:.60
                      animations:^{
-                         constraint.constant = 70;
+                         constraint.constant = 120;
                          [view layoutIfNeeded];
                      }];
 }
@@ -120,7 +120,7 @@
 {
     [UIView animateWithDuration:.30
                      animations:^{
-                         constraint.constant = -170;
+                         constraint.constant = -165;
                          [view layoutIfNeeded];
                      }];
 }
@@ -285,7 +285,8 @@
                                                               @"Rome":@"Roma",
                                                               @"Sur":@"Madrid Sur",
                                                               @"Milan":@"Milano",
-                                                              @"13":@"Milano Nord"
+                                                              @"13":@"Milano Nord",
+                                                              @"Lisbon":@"Lisboa"
                                                               };
     
     return conversionTable[cityName];
