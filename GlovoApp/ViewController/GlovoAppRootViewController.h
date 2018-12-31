@@ -10,8 +10,6 @@
 #import "GlovoAppPresenterProtocol.h"
 #import <CoreLocation/CoreLocation.h>
 
-
-
 @interface GlovoAppRootViewController : UIViewController
 
 @property (strong, nonatomic) NSObject <GlovoAppPresenterProtocol> *presenter;

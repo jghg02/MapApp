@@ -8,14 +8,14 @@
 
 import UIKit
 
-class GooglePlace: NSObject {
+@objc public class GooglePlace: NSObject {
 
     public var placeId: String?
     public var longName: String?
     public var shortName: String?
     public var formattedAddress: String?
-    public var lat: Double?
-    public var lng: Double?
+    public var lat: Double = 0
+    public var lng: Double = 0
     
     init?(dictionary: NSDictionary?) {
         if (dictionary == nil) {
@@ -35,8 +35,8 @@ class GooglePlace: NSObject {
             let geometry = current["geometry"] as! NSDictionary
             let location = geometry["location"] as! NSDictionary
 
-            self.lat = location["lat"] as? Double
-            self.lng = location["lng"] as? Double
+            self.lat = (location["lat"] as? Double)!
+            self.lng = (location["lng"] as? Double)!
         }
         
     }

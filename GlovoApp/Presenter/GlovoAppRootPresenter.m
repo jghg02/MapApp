@@ -22,6 +22,8 @@
 @property (strong, nonatomic) GlovoAppPanelInfoView *panelView;
 @property (strong, nonatomic) CLPlacemark *currentPlace;
 @property (strong, nonatomic) NSMutableArray <GooglePlace *> *allGooglePlaces;
+@property (strong, nonatomic) NSMutableArray <GMSMarker *> *markers;
+@property (strong, nonatomic) GMSMapView *mapView;
 
 @end
 
@@ -35,6 +37,10 @@
     self.panelView = view;
 }
 
+- (void)initWithMapView:(GMSMapView *)mapView
+{
+    self.mapView = mapView;
+}
 
 #pragma mark - Google Maps Config
 
@@ -84,23 +90,25 @@
     return marker;
 }
 
+- (void)setAllMarkers:(GooglePlace *)place
+{
+    //[self.markers addObject:[self getMarker:place.lat longitude:place.lng]];
+    
+    //    NSMutableArray <GMSMarker *> *data = [self.presenter getAllLocations];
+    //    for (GMSMarker* current in data) {
+    //        current.map = self.mapView;
+    //    }
+    
+    GMSMarker *marker = [self getMarker:place.lat longitude:place.lng];
+    marker.map = self.mapView;
+    
+}
+
 #pragma mark - Load JSON
 
 - (NSURL *)getURLToJSON
 {
     return [[GlovoAppBundle bundle] URLForResource:@"style" withExtension:@"json"];
-}
-
-#pragma mark - Fetch API Information
-
-- (NSMutableArray <GMSMarker *> *)getAllLocations
-{
-    NSMutableArray <GMSMarker *> *markers = NSMutableArray.new;
-    
-    [markers addObject:[self getMarker:43.6570403 longitude:-79.3832]];
-    [markers addObject:[self getMarker:10.4685529 longitude:-66.9604057]];
-    
-    return markers;
 }
 
 #pragma mark - Panel Info
@@ -153,7 +161,6 @@
 
 - (void)updatePanelinfo:(GlovoAppPanelInfoView *)view data:(City *)data
 {
-    NSLog(@"View %@",view);
     [view populateViewWithData:data];
 }
 
@@ -213,6 +220,7 @@
     __weak __typeof(self)weakSelf = self;
     [GlovoAppServices googleMapsAPIWithCityName:cityName countryName:countryName completion:^(GooglePlace * _Nullable data) {
         [weakSelf.allGooglePlaces addObject:data];
+        [weakSelf setAllMarkers:data];
     }];
 }
 
@@ -243,6 +251,9 @@
 
 - (void)getAllInfoFromGoogle
 {
+    self.allGooglePlaces = NSMutableArray.new;
+    self.markers = NSMutableArray.new;
+    
     for (City *currentCity in self.cities) {
         for (Country *currentCountry in self.countries) {
             if ([currentCity.country_code isEqualToString:currentCountry.code]) {

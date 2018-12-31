@@ -53,6 +53,8 @@
 {
     [super viewDidLoad];
     
+    [self.presenter initWithMapView:self.mapView];
+    
     [self fetchData];
     [self addNavButton];
     
@@ -69,6 +71,7 @@
 {
     [self.presenter fetchCountries];
     [self.presenter fetchCities:self.listView];
+    
     
 //    NSMutableArray <GMSMarker *> *data = [self.presenter getAllLocations];
 //    for (GMSMarker* current in data) {

@@ -13,11 +13,14 @@
 @protocol GlovoAppPresenterProtocol
 
 - (void)initwithPlace:(CLPlacemark *)placeMark panelView:(GlovoAppPanelInfoView *)view;
+- (void)initWithMapView:(GMSMapView *)mapView;
 
 - (void)configMaps:(GMSMapView *)mapView delegate:(id<GMSMapViewDelegate>)delegate;
 - (CLLocationManager *)locationManager:(id <CLLocationManagerDelegate>)delegate;
 - (GMSMarker *)getMarker:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
+
 - (NSMutableArray <GMSMarker *> *)getAllLocations;
+- (void)setAllMarkers:(GooglePlace *)place;
 
 - (void)showPanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
 - (void)hidePanelInfo:(UIView *)view constraint:(NSLayoutConstraint *)constraint;
