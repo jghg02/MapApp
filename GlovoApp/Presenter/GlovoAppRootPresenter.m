@@ -92,13 +92,6 @@
 
 - (void)setAllMarkers:(GooglePlace *)place
 {
-    //[self.markers addObject:[self getMarker:place.lat longitude:place.lng]];
-    
-    //    NSMutableArray <GMSMarker *> *data = [self.presenter getAllLocations];
-    //    for (GMSMarker* current in data) {
-    //        current.map = self.mapView;
-    //    }
-    
     GMSMarker *marker = [self getMarker:place.lat longitude:place.lng];
     marker.map = self.mapView;
     
@@ -249,6 +242,24 @@
     }
 }
 
+- (void)updatePanelInfoWithMarker:(GMSMarker *)marker
+{
+    for (GooglePlace *currentGP in self.allGooglePlaces) {
+        if (currentGP.lat == marker.position.latitude && currentGP.lng == marker.position.longitude){
+            NSLog(@"This is a country %@",currentGP.longName);
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name==%@",currentGP.longName];
+            City *city = [self.cities filteredArrayUsingPredicate:predicate].firstObject;
+            if (city == nil) {
+                predicate = [NSPredicate predicateWithFormat:@"name==%@",[self hasConvertion:currentGP.longName]];
+                city = [self.cities filteredArrayUsingPredicate:predicate].firstObject;
+            }
+            
+            [self fetchCityDetails:city.code];
+        }
+    }
+    
+}
+
 - (void)getAllInfoFromGoogle
 {
     self.allGooglePlaces = NSMutableArray.new;
@@ -261,6 +272,17 @@
             }
         }
     }
+}
+
+- (NSString *)hasConvertion:(NSString *)cityName
+{
+    NSDictionary<NSString *, NSString *> *conversionTable = @{
+                                                              @"Turin":@"Torino",
+                                                              @"Rome":@"Roma",
+                                                              @"Sur":@"Madrid Sur"
+                                                              };
+    
+    return conversionTable[cityName];
 }
 
 @end

@@ -35,5 +35,6 @@
 - (void)fetchGoogleAPI:(NSString *)cityName countryName:(NSString *)countryName;
 
 - (void)updatePanelInfo:(GlovoAppPanelInfoView *)view country:(NSString *)countryName city:(NSString *)city;
+- (void)updatePanelInfoWithMarker:(GMSMarker *)marker;
 
 @end

@@ -71,12 +71,6 @@
 {
     [self.presenter fetchCountries];
     [self.presenter fetchCities:self.listView];
-    
-    
-//    NSMutableArray <GMSMarker *> *data = [self.presenter getAllLocations];
-//    for (GMSMarker* current in data) {
-//        current.map = self.mapView;
-//    }
 }
 
 #pragma mark - Config Location
@@ -114,11 +108,6 @@
             [self.presenter initwithPlace:self.placemark panelView:self.panelInfoView];
         }
     }];
-    
-    
-//    //Set pin in current location
-//    self.marker = [self.presenter getMarker:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
-//    self.marker.map = self.mapView;
 
 }
 
@@ -151,6 +140,7 @@
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
+    [self.presenter updatePanelInfoWithMarker:marker];
     CGPoint point = [self.mapView.projection pointForCoordinate:marker.position];
     GMSCameraUpdate *camera = [GMSCameraUpdate setTarget:[self.mapView.projection coordinateForPoint:point] zoom:16];
     [self.mapView animateWithCameraUpdate:camera];

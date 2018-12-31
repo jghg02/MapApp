@@ -73,10 +73,8 @@ import SwiftyJSON
     
     
     @objc public class func fetchCityDetails(city_code: String? ,completion: @escaping (City?) -> Void) {
-        
-        let params: [String:String] = ["city_code":city_code!]
-        
-        Alamofire.request("https://3f696c32.ngrok.io/api/cities/\(city_code!)", method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+
+        Alamofire.request("https://3f696c32.ngrok.io/api/cities/\(city_code!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             switch response.result {
             case .failure( _):
